@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #07060a;
+    --bg-soft: #0e0c14;
+    --accent: #a855f7;
+    --accent-light: #c084fc;
+    --accent-dark: #7c3aed;
+  }
+
+  * {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: #e9e7f0;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(168, 85, 247, 0.3);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-soft {
+    background: linear-gradient(180deg, #f5f3ff 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 40px -10px rgba(168, 85, 247, 0.5);
+  }
+
+  .glow-purple-strong {
+    box-shadow: 0 0 80px -10px rgba(168, 85, 247, 0.4), 0 0 30px -5px rgba(168, 85, 247, 0.3);
+  }
+}
+
+/* === Wafer Stack Animation === */
+@keyframes wafer-float {
+  0%, 100% {
+    transform: translateY(0) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz));
+  }
+  50% {
+    transform: translateY(-20px) rotateX(var(--rx)) rotateY(calc(var(--ry) + 5deg)) rotateZ(var(--rz));
+  }
+}
+
+@keyframes wafer-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse-slow {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 25s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.ticker-track {
+  animation: ticker-scroll 40s linear infinite;
+}
+
+.wafer-shimmer {
+  background-size: 200% 100%;
+  animation: wafer-shimmer 3s linear infinite;
+}
+
+.slide-active {
+  animation: slide-in 0.6s ease-out forwards;
+}
+
+.slide-exit {
+  animation: slide-out 0.4s ease-out forwards;
+}
+
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.ravenick-badge {
+  position: fixed;
+  left: max(1rem, env(safe-area-inset-left));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 2147483647;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 3.25rem;
+  padding: 0.625rem 0.875rem 0.625rem 0.625rem;
+  color: #ffffff;
+  text-decoration: none;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(135deg, rgba(14, 12, 20, 0.94), rgba(24, 17, 40, 0.92)),
+    radial-gradient(circle at 20% 20%, rgba(192, 132, 252, 0.25), transparent 35%);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.38),
+    0 0 30px rgba(168, 85, 247, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.ravenick-badge::before {
+  content: '';
+  position: absolute;
+  inset: -40% -80%;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 34%,
+    rgba(255, 255, 255, 0.16) 44%,
+    rgba(255, 255, 255, 0.42) 50%,
+    rgba(255, 255, 255, 0.12) 56%,
+    transparent 66%
+  );
+  transform: translateX(-55%) rotate(6deg);
+  animation: ravenick-sheen 3.8s ease-in-out infinite;
+}
+
+.ravenick-badge__logo {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(192, 132, 252, 0.42));
+}
+
+.ravenick-badge__text {
+  display: grid;
+  gap: 0.05rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.ravenick-badge__text span {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(233, 231, 240, 0.62);
+}
+
+.ravenick-badge__text strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  color: #ffffff;
+}
+
+@keyframes ravenick-sheen {
+  0%,
+  42% {
+    transform: translateX(-55%) rotate(6deg);
+  }
+  72%,
+  100% {
+    transform: translateX(55%) rotate(6deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .ravenick-badge {
+    min-height: 3rem;
+    padding-right: 0.75rem;
+  }
+
+  .ravenick-badge__logo {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07060a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7c3aed, #a855f7);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a855f7;
+}
+
+/* 3D perspective helpers */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.perspective-2000 {
+  perspective: 2000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
