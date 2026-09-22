@@ -16,6 +16,12 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!supabase) {
+      setStatus('error');
+      setErrorMsg('Contact submissions are temporarily unavailable. Please email us directly.');
+      return;
+    }
+
     setStatus('loading');
     setErrorMsg('');
 

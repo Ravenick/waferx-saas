@@ -65,6 +65,15 @@ npm install
 npm run dev
 ```
 
+For the contact form, add these variables to `.env.local` and to the Vercel project settings:
+
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+The landing page still renders if these variables are missing, but contact submissions remain disabled until they are configured.
+
 Create a production build with:
 ```bash
 npm run build
