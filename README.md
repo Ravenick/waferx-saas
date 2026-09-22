@@ -3,11 +3,12 @@
 A premium, OC-themed semiconductor landing page built around a layered wafer architecture concept. The interface demonstrates cinematic hero motion, dense product storytelling, responsive pricing systems, and Supabase-backed contact capture within a dark system-inspired aesthetic.
 
 > [!NOTE]
-> [Live demo coming soon](#)
+> [Live demo](https://waferx-saas.vercel.app/)
 
 ## Preview
 
-
+![desktop](./public/desktop.png)
+![mobile](./public/mobile.png)
 
 
 ## Features
@@ -59,8 +60,8 @@ supabase/
 
 ## Run Locally
 ```bash
-git clone https://github.com/Ravenick/waferx-semiconductor-landing-page.git
-cd "waferx-semiconductor-landing-page"
+git clone https://github.com/Ravenick/waferx-saas.git
+cd "waferx-saas"
 npm install
 npm run dev
 ```
